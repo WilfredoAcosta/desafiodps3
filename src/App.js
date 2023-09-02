@@ -11,7 +11,8 @@ import {
   Radio,
   Select,
   Divider,
-  Typography
+  Typography,
+  Space
 } from 'antd';
 const { RangePicker } = DatePicker;
 const { Paragraph } = Typography;
@@ -26,18 +27,13 @@ const FormDisabledDemo = () => {
   const [componentDisabled, setComponentDisabled] = useState(false);
   return (
     <>
-      
+      <Space direction="horizontal" style={{width: '100%', justifyContent: 'center'}}>
       <Form
-        labelCol={{
-          span: 12,
-        }}
-        wrapperCol={{
-          span: 10,
-        }}
-        layout="right-align"
+        layout="horizontal"
         style={{
-          maxWidth: 900,
-        }}
+          maxWidth:700
+        }
+        }
       >
                <Form.Item label=" ">
                <Typography.Title
@@ -76,20 +72,7 @@ const FormDisabledDemo = () => {
         <Form.Item label="Button">
           <Button>Button</Button>
         </Form.Item>
-      </Form>
-  
-       <Form
-           labelCol={{
-            span: 12,
-          }}
-          wrapperCol={{
-            span: 10,
-          }}
-          layout="horizontal"
-          style={{
-            maxWidth: 900,
-          }}>
-               <Form.Item label=" ">
+        <Form.Item label=" ">
                <Typography.Title
         level={1}
         style={{
@@ -98,30 +81,15 @@ const FormDisabledDemo = () => {
       >
        Factura
       </Typography.Title>
+      <Input placeholder='Destino vacacional' disabled />
+      <Input placeholder='Cantidad de personas' disabled />
+      <Input placeholder='Costo por persona' disabled />
+      <Input placeholder='Impuesto por persona' disabled />
+      <Input placeholder='Total a pagar' disabled />
         </Form.Item>
-        <Form.Item>
-          <Form.Item label="Destino">
-            <Input placeholder='Destino vacacional' disabled />
-          </Form.Item>
 
-          <Form.Item label="Personas">
-            <Input placeholder='Cantidad de personas' disabled />
-          </Form.Item>
-
-          <Form.Item label="Costo*Persona">
-            <Input placeholder='Costo por persona' disabled />
-          </Form.Item>
-
-          <Form.Item label="Impuesto*Persona">
-            <Input placeholder='Impuesto por persona' disabled />
-          </Form.Item>
-
-          <Form.Item label="Total">
-            <Input placeholder='Total a pagar' disabled />
-          </Form.Item>
-
-        </Form.Item>
       </Form>
+      </Space>
     </>
   );
 };
