@@ -10,12 +10,11 @@ import {
   InputNumber,
   Radio,
   Select,
-  Slider,
-  Switch,
-  TreeSelect,
-  Upload,
+  Divider,
+  Typography
 } from 'antd';
 const { RangePicker } = DatePicker;
+const { Paragraph } = Typography;
 const { TextArea } = Input;
 const normFile = (e) => {
   if (Array.isArray(e)) {
@@ -30,18 +29,27 @@ const FormDisabledDemo = () => {
       
       <Form
         labelCol={{
-          span: 4,
+          span: 12,
         }}
         wrapperCol={{
-          span: 14,
+          span: 10,
         }}
-        layout="horizontal"
-        disabled={componentDisabled}
+        layout="right-align"
         style={{
-          maxWidth: 600,
+          maxWidth: 900,
         }}
       >
-    
+               <Form.Item label=" ">
+               <Typography.Title
+        level={1}
+        style={{
+          margin: 0,
+        }}
+      >
+       UBD Tours
+      </Typography.Title>
+        </Form.Item>
+ 
         <Form.Item label="Destino">
           <Select>
             <Select.Option value="panama">Ciudad de Panama</Select.Option>
@@ -69,19 +77,28 @@ const FormDisabledDemo = () => {
           <Button>Button</Button>
         </Form.Item>
       </Form>
-
+  
        <Form
-        labelCol={{
-          span: 4,
-        }}
-        wrapperCol={{
-          span: 14,
-        }}
-        layout="horizontal"
-        disabled={false}
+           labelCol={{
+            span: 12,
+          }}
+          wrapperCol={{
+            span: 10,
+          }}
+          layout="horizontal"
+          style={{
+            maxWidth: 900,
+          }}>
+               <Form.Item label=" ">
+               <Typography.Title
+        level={1}
         style={{
-          maxWidth: 600,
-        }}>
+          margin: 0,
+        }}
+      >
+       Factura
+      </Typography.Title>
+        </Form.Item>
         <Form.Item>
           <Form.Item label="Destino">
             <Input placeholder='Destino vacacional' disabled />
