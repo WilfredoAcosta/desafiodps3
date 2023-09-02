@@ -40,6 +40,7 @@ const FormDisabledDemo = () => {
         level={1}
         style={{
           margin: 0,
+          textAlign:'center'
         }}
       >
        UBD Tours
@@ -77,6 +78,7 @@ const FormDisabledDemo = () => {
         level={1}
         style={{
           margin: 0,
+          textAlign:'center'
         }}
       >
        Factura
