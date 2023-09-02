@@ -42,10 +42,7 @@ const FormDisabledDemo = () => {
         }}
       >
     
-        <Form.Item label="Input">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Select">
+        <Form.Item label="Destino">
           <Select>
             <Select.Option value="panama">Ciudad de Panama</Select.Option>
             <Select.Option value="mexico">Cancun Mexico</Select.Option>
@@ -71,7 +68,42 @@ const FormDisabledDemo = () => {
         <Form.Item label="Button">
           <Button>Button</Button>
         </Form.Item>
-        
+      </Form>
+
+       <Form
+        labelCol={{
+          span: 4,
+        }}
+        wrapperCol={{
+          span: 14,
+        }}
+        layout="horizontal"
+        disabled={false}
+        style={{
+          maxWidth: 600,
+        }}>
+        <Form.Item>
+          <Form.Item label="Destino">
+            <Input placeholder='Destino vacacional' disabled />
+          </Form.Item>
+
+          <Form.Item label="Personas">
+            <Input placeholder='Cantidad de personas' disabled />
+          </Form.Item>
+
+          <Form.Item label="Costo*Persona">
+            <Input placeholder='Costo por persona' disabled />
+          </Form.Item>
+
+          <Form.Item label="Impuesto*Persona">
+            <Input placeholder='Impuesto por persona' disabled />
+          </Form.Item>
+
+          <Form.Item label="Total">
+            <Input placeholder='Total a pagar' disabled />
+          </Form.Item>
+
+        </Form.Item>
       </Form>
     </>
   );
