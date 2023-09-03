@@ -19,7 +19,22 @@ const FormDisabledDemo = () => {
 
 
   const CalcularCosto = () => {
-
+    destinos.forEach(ele => {
+      if (destino === ele.nombre) {
+        if (cantidadPersonas !== 0) {
+          if (cantidadPersonas > 4) {
+            setCostoPorPersona(ele.adicional[3])
+          } else {
+            setCostoPorPersona(ele.adicional[cantidadPersonas - 1])
+          }
+          setImpuestosPorPersona((((ele.impuesto/100) * costoPorPersona)))
+          setTotalPagar(costoPorPersona + (impuestosPorPersona * cantidadPersonas))
+        } else {
+          setCostoPorPersona(0)
+          setTotalPagar(0)
+        }
+      }
+    });
   }
 
   return (
@@ -69,7 +84,7 @@ const FormDisabledDemo = () => {
             />
           </Form.Item>
           <Form.Item label="Confirmar">
-            <Button>Calcular</Button>
+            <Button onClick={() => CalcularCosto()}>Calcular</Button>
           </Form.Item>
         </Form>
 
