@@ -8,13 +8,19 @@ import {
   Space
 } from 'antd';
 import Factura from './components/Factura';
+import { destinos } from './utils/data';
 const FormDisabledDemo = () => {
 
-  const [destino, setDestino] = useState('');
+  const [destino, setDestino] = useState('Ciudad de Panama');
   const [cantidadPersonas, setCantidadPersonas] = useState(0);
   const [costoPorPersona, setCostoPorPersona] = useState(0);
   const [impuestosPorPersona, setImpuestosPorPersona] = useState(0);
   const [totalPagar, setTotalPagar] = useState(0);
+
+
+  const CalcularCosto = () => {
+
+  }
 
   return (
     <>
@@ -41,12 +47,10 @@ const FormDisabledDemo = () => {
           <Form.Item label="Destino">
             <Select onChange={(valorNuevo) => (
               setDestino(valorNuevo)
-            )} defaultValue='Ciudad de Panama'>
-              <Select.Option value="Ciudad de Panama">Ciudad de Panama</Select.Option>
-              <Select.Option value="Cancun Mexico">Cancun Mexico</Select.Option>
-              <Select.Option value="Santiago de Chile">Santiago de Chile</Select.Option>
-              <Select.Option value="Machu picchu Peru">Machu picchu Peru</Select.Option>
-              <Select.Option value="Roatan Honduras">Roatan Honduras</Select.Option>
+            )} defaultValue={destino}>
+              {destinos.map(e => (
+                <Select.Option value={e.nombre}>{e.descripcion}</Select.Option>
+              ))}
             </Select>
           </Form.Item>
 
