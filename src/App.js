@@ -39,16 +39,18 @@ const FormDisabledDemo = () => {
           </Form.Item>
 
           <Form.Item label="Destino">
-            <Select>
-              <Select.Option value="panama">Ciudad de Panama</Select.Option>
-              <Select.Option value="mexico">Cancun Mexico</Select.Option>
-              <Select.Option value="chile">Santiago de Chile</Select.Option>
-              <Select.Option value="peru">Machu picchu Peru</Select.Option>
-              <Select.Option value="honduras">Roatan Honduras</Select.Option>
+            <Select onChange={(valorNuevo) => (
+              setDestino(valorNuevo)
+            )} defaultValue='Ciudad de Panama'>
+              <Select.Option value="Ciudad de Panama">Ciudad de Panama</Select.Option>
+              <Select.Option value="Cancun Mexico">Cancun Mexico</Select.Option>
+              <Select.Option value="Santiago de Chile">Santiago de Chile</Select.Option>
+              <Select.Option value="Machu picchu Peru">Machu picchu Peru</Select.Option>
+              <Select.Option value="Roatan Honduras">Roatan Honduras</Select.Option>
             </Select>
           </Form.Item>
 
-          <Form.Item label="Personas: " required>
+          <Form.Item label="# de Personas: " required>
             <InputNumber
               min={1}
               onKeyPress={(event) => {
@@ -56,16 +58,20 @@ const FormDisabledDemo = () => {
                   event.preventDefault();
                 }
               }}
+
+              onChange={(e) => {
+                setCantidadPersonas(e)
+              }}
             />
           </Form.Item>
-          <Form.Item label="Button">
-            <Button>Button</Button>
+          <Form.Item label="Confirmar">
+            <Button>Calcular</Button>
           </Form.Item>
         </Form>
 
       </Space>
-      <Factura destino={destino} cantidadPersonas={cantidadPersonas}costoPorPersona={costoPorPersona}
-      impuestosPorPersona={impuestosPorPersona} totalPagar={totalPagar} ></Factura>
+      <Factura destino={destino} cantidadPersonas={cantidadPersonas} costoPorPersona={costoPorPersona}
+        impuestosPorPersona={impuestosPorPersona} totalPagar={totalPagar} ></Factura>
     </>
   );
 };
