@@ -15,10 +15,15 @@ const FormDisabledDemo = () => {
   const [cantidadPersonas, setCantidadPersonas] = useState(0);
   const [costoPorPersona, setCostoPorPersona] = useState(0);
   const [impuestosPorPersona, setImpuestosPorPersona] = useState(0);
+  const [impuestos, setImpuestos] = useState(0);
   const [totalPagar, setTotalPagar] = useState(0);
 
 
   const CalcularCosto = () => {
+    setTotalPagar(costoPorPersona + (impuestosPorPersona * cantidadPersonas))
+  }
+
+  const ActualizarData = () => {
     destinos.forEach(ele => {
       if (destino === ele.nombre) {
         if (cantidadPersonas !== 0) {
@@ -26,15 +31,16 @@ const FormDisabledDemo = () => {
             setCostoPorPersona(ele.adicional[3])
           } else {
             setCostoPorPersona(ele.adicional[cantidadPersonas - 1])
+            setImpuestos(ele.impuesto)
           }
-          setImpuestosPorPersona((((ele.impuesto/100) * costoPorPersona)))
-          setTotalPagar(costoPorPersona + (impuestosPorPersona * cantidadPersonas))
         } else {
           setCostoPorPersona(0)
+          setImpuestosPorPersona(0)
           setTotalPagar(0)
         }
       }
     });
+    setImpuestosPorPersona((impuestos / 100) * costoPorPersona)
   }
 
   return (
@@ -60,9 +66,10 @@ const FormDisabledDemo = () => {
           </Form.Item>
 
           <Form.Item label="Destino">
-            <Select onChange={(valorNuevo) => (
+            <Select onChange={(valorNuevo) => {
               setDestino(valorNuevo)
-            )} defaultValue={destino}>
+              ActualizarData()
+            }} defaultValue={destino}>
               {destinos.map(e => (
                 <Select.Option value={e.nombre}>{e.descripcion}</Select.Option>
               ))}
@@ -80,6 +87,7 @@ const FormDisabledDemo = () => {
 
               onChange={(e) => {
                 setCantidadPersonas(e)
+                ActualizarData()
               }}
             />
           </Form.Item>
